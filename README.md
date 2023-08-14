@@ -22,7 +22,7 @@ kubectl create -f  httpd-service.yml
 helm install my-ingress ingress-nginx/ingress-nginx
 ```
 
-**4. Install cert-manager for Let's Encrypt SSL certificates.**
+**4. Install cert-manager for Let's Encrypt SSL certificates**
 
 Add the Jetstack Helm repository:
 
@@ -31,14 +31,14 @@ Add the Jetstack Helm repository:
  helm repo update
 ```
 
-- Create ingress resource
+**5. Create ingress resource**
 
 ```
 kubectl create -f Ingress.yml
 ```
 
 
-**Map ingress IP with Domain name once ingress installation finished**
+**6. Map ingress IP with Domain name**
 
 - get IP address and map domain name to external IP
 
@@ -52,7 +52,7 @@ my-ingress-ingress-nginx-controller-admission   ClusterIP      10.0.8.16    <non
 
 ```
 
-**Set up cert-manager**
+**7. Set up cert-manager**
 
 - Install the cert-manager Helm chart
 
@@ -60,13 +60,15 @@ my-ingress-ingress-nginx-controller-admission   ClusterIP      10.0.8.16    <non
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.12.3 --set installCRDs=true
 ```
 
-**Set up the ClusterIssuer resource for Let's Encrypt**
+
+**8. Set up the ClusterIssuer resource for Let's Encrypt**
 
 
 ```
 kubectl create -f cluster-issuer.yml
 ```
 
+**9. Check deployed resources**
 
 - Check deployed ingress resource and deployment
 
@@ -128,7 +130,7 @@ replicaset.apps/cert-manager-cainjector-79f5dbffcf   1         1         1      
 replicaset.apps/cert-manager-webhook-77b984cc67      1         1         1       42m
 ```
 
-##Browse and check
+**10. Browse and check**
 
 https://xxxx.xxxx.xxxx.com  
 
